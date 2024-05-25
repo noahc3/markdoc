@@ -40,12 +40,12 @@ export const ResumePreview = React.forwardRef<HTMLDivElement>((_, ref) => {
                 <div className="h-full w-full">
                     <root.div style={{ width: scaledWidth, height: scaledHeight }}>
                         <div ref={ref}>
+                            <style type="text/css">{css}</style>
                             <div
                                 ref={resumeRef}
                                 className="resume"
                                 style={{ transformOrigin: "top left", transform: `scale(${scale})` }}
                             >
-                                <style type="text/css">{css}</style>
                                 <div className="resume-content">{parse(html)}</div>
                             </div>
                         </div>

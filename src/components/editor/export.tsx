@@ -63,6 +63,7 @@ export default function ResumeExport(props: { resumeRef: React.RefObject<HTMLDiv
                                 return <Button>Print to PDF</Button>;
                             }}
                             content={() => props.resumeRef.current}
+                            copyStyles={false}
                         />
                     </div>
                 </div>
