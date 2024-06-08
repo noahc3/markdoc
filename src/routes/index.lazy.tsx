@@ -54,7 +54,7 @@ function Index() {
                     <ResizablePanel className="p-2">
                         <div className="h-full flex flex-col gap-2">
                             <div className="h-9"></div>
-                            <div className="flex flex-grow flex-col h-full pb-2 bg-content">
+                            <div className="flex flex-grow flex-col h-full bg-content">
                                 <h2 className="p-2 text-xl bg-border">Preview</h2>
                                 <div
                                     ref={containerRef}
