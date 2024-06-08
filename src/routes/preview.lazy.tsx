@@ -3,6 +3,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import React, { useEffect } from "react";
 import "./preview.css";
 import { useReactToPrint } from "react-to-print";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 type PreviewQueryParams = {
     print: boolean;
@@ -20,6 +21,7 @@ export const Route = createFileRoute("/preview")({
 function Preview() {
     const resumeRef = React.createRef<HTMLDivElement>();
     const { print } = Route.useSearch();
+    const [css] = useLocalStorage("css", "");
 
     const handlePrint = useReactToPrint({
         documentTitle: "Resume",
@@ -27,7 +29,7 @@ function Preview() {
         onAfterPrint: () => window.close(),
         removeAfterPrint: true,
         copyStyles: false,
-        pageStyle: "",
+        pageStyle: css + " .resume-content { overflow: visible; }",
         bodyClass: ""
     });
 
@@ -39,6 +41,7 @@ function Preview() {
 
     return (
         <>
+            <style type="text/css">{css}</style>
             <ResumePreview ref={resumeRef} />
         </>
     );

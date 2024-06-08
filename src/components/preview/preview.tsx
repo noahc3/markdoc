@@ -1,9 +1,7 @@
 import { useEffect, useState } from "react";
 import parse from "html-react-parser";
 import { RenderHTML } from "@/logic/markdown";
-import root from "react-shadow";
-import { useEditorStore } from "@/stores/editor";
-import { useLocalStorage, useMeasure } from "@uidotdev/usehooks";
+import { useLocalStorage } from "@uidotdev/usehooks";
 import React from "react";
 
 export const ResumePreview = React.forwardRef<HTMLDivElement>((_, ref) => {
@@ -20,7 +18,6 @@ export const ResumePreview = React.forwardRef<HTMLDivElement>((_, ref) => {
 
     return (
         <div ref={ref}>
-            <style type="text/css">{css}</style>
             <div className="resume">
                 <div className="resume-content">{parse(html)}</div>
             </div>
