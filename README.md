@@ -1,30 +1,19 @@
-# React + TypeScript + Vite
+# Markdoc
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Create and style professional documents with Markdown and CSS.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+-   Built-in Markdown and CSS editors with syntax highlighting and basic autofill.
+-   Realtime preview while you write and style.
+-   Export your document as PDF or print a paper copy using your browsers built-in print dialog.
+-   Choose sections to hide from your export, allowing you to pick and choose content from a larger source document to include in your export.
+    -   Great for creating specialized job-specific resumes!
 
-## Expanding the ESLint configuration
+## Components
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+This application is a TypeScript React webapp using recognizable packages like TanStack Router, shadcn/ui, TailwindCSS, Monaco, ReactToPrint, Remark, Rehype, and Unified.
 
-- Configure the top-level `parserOptions` property like this:
+### Markdown Parser
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+This app uses Remark, Rehype and Unified to render your Markdown to HTML to display in your browser and export. A custom Unified plugin is used for the hidden sections feature. This plugin traverses the markdown abstract-syntax tree before converting to HTML to determine which child elements are attributed to which Markdown headers based on heading depths. This allows the user to easily hide entire blocks of content from their export by just hiding the desired parent heading.

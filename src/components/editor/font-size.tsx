@@ -7,7 +7,7 @@ export default function FontSizeSlider() {
     const [editorFontSize, setEditorFontSize] = useLocalStorage("editorFontSize", 12);
 
     return (
-        <div className="flex flex-row items-center gap-2 text-sm">
+        <div className="flex flex-row items-center gap-2 text-sm h-5">
             <RiFontSize />
             <div className="w-36">
                 <Slider

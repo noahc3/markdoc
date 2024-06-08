@@ -8,6 +8,7 @@ import { ResumePreview } from "@/components/preview/preview";
 import ResumeExport from "@/components/editor/export";
 import React, { useEffect, useState } from "react";
 import { useMeasure } from "@uidotdev/usehooks";
+import FontSizeSlider from "@/components/editor/font-size";
 
 export const Route = createLazyFileRoute("/")({
     component: Index
@@ -37,7 +38,7 @@ function Index() {
                 <ResizablePanelGroup direction="horizontal">
                     <ResizablePanel className="p-2">
                         <Tabs defaultValue="edit" className="h-full w-full flex flex-col">
-                            <TabsList className="w-fit">
+                            <TabsList className="w-fit h-9">
                                 <TabsTrigger value="edit">Edit</TabsTrigger>
                                 <TabsTrigger value="export">Export</TabsTrigger>
                             </TabsList>
@@ -50,32 +51,36 @@ function Index() {
                         </Tabs>
                     </ResizablePanel>
                     <ResizableHandle withHandle />
-                    <ResizablePanel className="p-4 py-8">
-                        <div className="flex flex-col h-full pb-2 bg-content">
-                            <h2 className="p-2 text-xl bg-border">Preview</h2>
-                            <div
-                                ref={containerRef}
-                                className="flex flex-col justify-center place-items-center flex-grow"
-                            >
+                    <ResizablePanel className="p-2">
+                        <div className="h-full flex flex-col gap-2">
+                            <div className="h-9"></div>
+                            <div className="flex flex-grow flex-col h-full pb-2 bg-content">
+                                <h2 className="p-2 text-xl bg-border">Preview</h2>
                                 <div
-                                    style={{
-                                        width: scaledWidth,
-                                        height: scaledHeight
-                                    }}
+                                    ref={containerRef}
+                                    className="flex flex-col justify-center place-items-center flex-grow"
                                 >
                                     <div
-                                        ref={iframeRef}
                                         style={{
-                                            width: "8.5in",
-                                            height: "11in",
-                                            transform: `scale(${scale})`,
-                                            transformOrigin: "top left"
+                                            width: scaledWidth,
+                                            height: scaledHeight
                                         }}
                                     >
-                                        <iframe className="w-full h-full" src="/preview"></iframe>
+                                        <div
+                                            ref={iframeRef}
+                                            style={{
+                                                width: "8.5in",
+                                                height: "11in",
+                                                transform: `scale(${scale})`,
+                                                transformOrigin: "top left"
+                                            }}
+                                        >
+                                            <iframe className="w-full h-full" src="/preview"></iframe>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div className="h-5"></div>
                         </div>
                     </ResizablePanel>
                 </ResizablePanelGroup>
