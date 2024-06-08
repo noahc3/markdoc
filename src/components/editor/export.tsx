@@ -1,12 +1,13 @@
 import { GetAllSections, SimpleASTSection } from "@/logic/markdown";
-import { useEditorStore } from "@/stores/editor";
 import { useEffect, useState } from "react";
 import { Checkbox } from "../ui/checkbox";
 import { Button } from "../ui/button";
-import ReactToPrint from "react-to-print";
+import { useLocalStorage } from "@uidotdev/usehooks";
+import { Link } from "@tanstack/react-router";
 
-export default function ResumeExport(props: { resumeRef: React.RefObject<HTMLDivElement> }) {
-    const { markdown, hiddenSections, setHiddenSections } = useEditorStore();
+export default function ResumeExport() {
+    const [markdown] = useLocalStorage("markdown", "");
+    const [hiddenSections, setHiddenSections] = useLocalStorage("hiddenSections", [] as number[]);
     const [sections, setSections] = useState<SimpleASTSection[]>([]);
 
     function toggleSection(index: number) {
@@ -35,12 +36,12 @@ export default function ResumeExport(props: { resumeRef: React.RefObject<HTMLDiv
         const key = `cbsec-${section.index}`;
         return (
             <div
-                className="flex flex-row gap-2 h-6"
+                className="flex flex-row gap-2 p-0.5 place-items-center"
                 style={{ paddingLeft: `${(section.depth - 1) * 20}px` }}
                 key={key}
             >
                 <Checkbox id={key} checked={section.visible} onCheckedChange={() => toggleSection(index)} />
-                <label className="leading-[15px] h-4" htmlFor={key}>
+                <label className="leading-5 text-sm" htmlFor={key}>
                     {section.text}
                 </label>
             </div>
@@ -57,14 +58,20 @@ export default function ResumeExport(props: { resumeRef: React.RefObject<HTMLDiv
                         <div className="px-4 py-2">{checkboxes}</div>
                     </div>
                     <hr />
-                    <div>
-                        <ReactToPrint
-                            trigger={() => {
-                                return <Button>Print to PDF</Button>;
+                    <div className="flex flex-row place-items-center gap-2">
+                        <Link
+                            to="/preview"
+                            search={{
+                                print: true
                             }}
-                            content={() => props.resumeRef.current}
-                            copyStyles={false}
-                        />
+                            target="_blank"
+                            className="w-fit"
+                        >
+                            <Button>Print / Export</Button>
+                        </Link>
+                        <small>
+                            The print dialog will open in a separate window to preserve your custom styles.
+                        </small>
                     </div>
                 </div>
             </div>

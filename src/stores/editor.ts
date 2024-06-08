@@ -32,6 +32,11 @@ export const useEditorStore = create<EditorState>( (set) => {
         set({ editorFontSize });
     }
 
+    function setHiddenSections(hiddenSections: number[]) {
+        localStorage.setItem('hiddenSections', JSON.stringify(hiddenSections));
+        set({ hiddenSections });
+    }
+
     return {
         css: initialCSS,
         setCSS: setCSS,
@@ -40,7 +45,7 @@ export const useEditorStore = create<EditorState>( (set) => {
         editorFontSize: initialFontSize,
         setEditorFontSize: setEditorFontSize,
         hiddenSections: [],
-        setHiddenSections: (hiddenSections: number[]) => set({ hiddenSections })
+        setHiddenSections: setHiddenSections
     }
 
 } )

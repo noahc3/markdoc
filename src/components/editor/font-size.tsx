@@ -1,9 +1,10 @@
 import { useEditorStore } from "@/stores/editor";
 import { Slider } from "../ui/slider";
 import { RiFontSize } from "react-icons/ri";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 export default function FontSizeSlider() {
-    const { editorFontSize, setEditorFontSize } = useEditorStore();
+    const [editorFontSize, setEditorFontSize] = useLocalStorage("editorFontSize", 12);
 
     return (
         <div className="flex flex-row items-center gap-2 text-sm">
