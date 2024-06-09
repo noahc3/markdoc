@@ -3,12 +3,10 @@ import { createLazyFileRoute } from "@tanstack/react-router";
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Editor from "@/components/editor/editor";
-import { ResumePreview } from "@/components/preview/preview";
 
 import ResumeExport from "@/components/editor/export";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useMeasure } from "@uidotdev/usehooks";
-import FontSizeSlider from "@/components/editor/font-size";
 
 export const Route = createLazyFileRoute("/")({
     component: Index

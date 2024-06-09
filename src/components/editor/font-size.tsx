@@ -1,4 +1,3 @@
-import { useEditorStore } from "@/stores/editor";
 import { Slider } from "../ui/slider";
 import { RiFontSize } from "react-icons/ri";
 import { useLocalStorage } from "@uidotdev/usehooks";

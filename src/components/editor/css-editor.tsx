@@ -1,5 +1,4 @@
 import { defaultCSS } from "@/stores/defaults";
-import { useEditorStore } from "@/stores/editor";
 import { Editor } from "@monaco-editor/react";
 import { useLocalStorage } from "@uidotdev/usehooks";
 

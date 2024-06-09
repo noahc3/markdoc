@@ -3,10 +3,10 @@ import CSSEditor from "./css-editor";
 import { ResizableHandle, ResizablePanel, ResizablePanelGroup } from "@/components/ui/resizable";
 import FontSizeSlider from "./font-size";
 import { useEffect } from "react";
-import { useEditorStore } from "@/stores/editor";
+import { useLocalStorage } from "@uidotdev/usehooks";
 
 export default function Editor() {
-    const { setHiddenSections } = useEditorStore();
+    const [_, setHiddenSections] = useLocalStorage("hiddenSections", []);
 
     useEffect(() => {
         setHiddenSections([]);

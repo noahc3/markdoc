@@ -2,6 +2,10 @@
 
 Create and style professional documents with Markdown and CSS.
 
+Try it out at https://markdoc.noahc3.cc
+
+Note: This app is in alpha and currently only supports editing a single 8.5x11in document.
+
 ## Features
 
 -   Built-in Markdown and CSS editors with syntax highlighting and basic autofill.

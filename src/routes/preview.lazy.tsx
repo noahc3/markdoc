@@ -1,9 +1,12 @@
-import { ResumePreview } from "@/components/preview/preview";
+import { ContentRenderer } from "@/components/render/renderer";
 import { createFileRoute } from "@tanstack/react-router";
 import React, { useEffect } from "react";
 import "./preview.css";
 import { useReactToPrint } from "react-to-print";
 import { useLocalStorage } from "@uidotdev/usehooks";
+
+/* This route provides the content for the iframe used for the preview pane in the editor and also
+   handles document export using ReactToPrint. */
 
 type PreviewQueryParams = {
     print: boolean;
@@ -42,7 +45,7 @@ function Preview() {
     return (
         <>
             <style type="text/css">{css}</style>
-            <ResumePreview ref={resumeRef} />
+            <ContentRenderer ref={resumeRef} />
         </>
     );
 }
